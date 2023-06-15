@@ -1,20 +1,31 @@
-import { Layout, Space,Button } from 'antd';
+import {Outlet} from "react-router-dom";
+import { Layout, Space } from 'antd';
+import { ConfigProvider } from 'antd';
+import 'antd/dist/reset.css';
+
+
 import Header from "../componenst/Header/Header.tsx";
+import Footer from "../componenst/Footer/Footer.tsx"
 
 const PublicLayout = () => {
-    const { Footer, Content } = Layout;
 
     return (
-        <div>
-            <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
-                <Layout>
-
-                    <Header />
-                    <Content>Content</Content>
-                    <Footer />
-                </Layout>
-            </Space>
-        </div>
+        <ConfigProvider
+            theme={{
+                token: {
+                    colorPrimary: '#00b96b',
+                    fontSize: 24
+                },
+            }}
+        >
+        <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
+            <Layout>
+                <Header />
+                <Outlet />
+                <Footer />
+            </Layout>
+        </Space>
+        </ConfigProvider>
     );
 };
 
