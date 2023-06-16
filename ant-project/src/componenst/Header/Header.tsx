@@ -1,47 +1,43 @@
-import { useNavigate } from 'react-router-dom';
-import { Layout, Menu, Space, Button, Skeleton } from 'antd';
-import type { MenuProps } from 'antd';
-import { UserOutlined, HeartOutlined, ShoppingCartOutlined } from '@ant-design/icons';
-
-
-
-
+import { useNavigate } from "react-router-dom";
+import { Menu, Space, Button, Skeleton } from "antd";
+import type { MenuProps } from "antd";
+import { UserOutlined, HeartOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 
 const Header = () => {
     const navigate = useNavigate();
 
-    const items: MenuProps['items'] = [
+    const items: MenuProps["items"] = [
         {
-            label: 'Home',
-            key: '/',
+            label: "Home",
+            key: "/",
         },
         {
-            label: 'about',
-            key: 'about',
+            label: "about",
+            key: "about",
         },
         {
-            label: 'Contact',
-            key: 'contact',
+            label: "Contact",
+            key: "contact",
         },
         {
-            label: 'profile',
-            key: 'profile',
+            label: "profile",
+            key: "profile",
         },
         {
-            label: 'product',
-            key: 'product',
+            label: "product",
+            key: "product",
         },
     ];
 
     return (
-        <Layout style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Space style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "0 20px" }}>
             <Menu
                 onClick={({key}) => {
                     navigate(key)
                 }}
                 theme="dark"
                 mode="horizontal"
-                defaultSelectedKeys={['/']}
+                defaultSelectedKeys={["/"]}
                 items={items}
             />
 
@@ -58,7 +54,7 @@ const Header = () => {
                     <ShoppingCartOutlined />
                 </Button>
             </Space>
-        </Layout>
+        </Space>
     );
 };
 
