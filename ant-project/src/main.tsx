@@ -3,10 +3,8 @@ import ReactDOM from "react-dom/client"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import PublicLayout from "./layouts/";
-import ErrorPage from "./pages/ErrorPage";
-import HomePage from "./pages/Home";
-import AboutPage from "./pages/About";
-import ContactPage from "./pages/Contact";
+
+import { HomePage, AboutPage,ContactPage, ErrorPage } from "./pages"
 
 const router = createBrowserRouter([
     {
