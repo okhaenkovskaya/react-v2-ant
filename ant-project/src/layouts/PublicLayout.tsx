@@ -13,7 +13,7 @@ const PublicLayout = () => {
             theme={{
                 token: {
                     colorPrimary: "#00b96b",
-                    fontSize: 24,
+                    fontSize: 20,
                     borderRadius: 15
                 },
             }}

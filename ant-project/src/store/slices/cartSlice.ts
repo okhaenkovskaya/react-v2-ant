@@ -29,7 +29,7 @@ export const cartSlice = createSlice({
 
       saveCartToLS(state.items, state.totalCount, state.totalPrice);
     },
-    removeItemToCart: (state, action: PayloadAction<string>) => {
+    removeItemFromCart: (state, action: PayloadAction<string>) => {
       const findItem = state.items.find((item) => item.id === action.payload);
 
       if(findItem) {
@@ -69,4 +69,4 @@ export const cartSlice = createSlice({
 });
 
 export default cartSlice.reducer;
-export const {addItemToCart, removeItemToCart, minusCartItem, clearCartItems} = cartSlice.actions;
+export const {addItemToCart, removeItemFromCart, minusCartItem, clearCartItems} = cartSlice.actions;

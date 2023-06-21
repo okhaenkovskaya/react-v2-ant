@@ -1,28 +1,66 @@
-import { Col, Row } from "antd";
-import { Typography } from "antd";
+import {useEffect} from "react";
+import {fetchProducts} from "../../store/slices/productSlice";
+import { Col, Row, Spin } from "antd";
 
-const { Title, Text, Link } = Typography;
+import {EProductSliceStatus, IProductBlock} from "../../types/productSliceTypes";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+
 
 import TabsSection from "../../componenst/Tabs/Tabs.tsx"
-import Gallery from "../../componenst/Gallery/Gallery.tsx";
+import ProductBlock from "../../componenst/ProductBlock/ProductBlock";
 
 const HomePage = () => {
+  const {
+    productList,
+    status
+  } = useAppSelector((state) => state.products);
+
+  const {
+    categoryID,
+    searchValue
+  } = useAppSelector((state) => state.filter);
+
+  const dispatch = useAppDispatch();
+
+
+  useEffect(() => {
+    dispatch(
+      fetchProducts({
+        categoryID,
+        searchValue
+      })
+    );
+    window.scrollTo(0,0)
+  }, [categoryID, searchValue, dispatch])
+
+  if (status === EProductSliceStatus.Error) {
+    return <div>{status}</div>
+  }
+
+  if (status === EProductSliceStatus.Loading) {
+    return <Spin tip="Loading" size="large">
+      <div className="content" />
+    </Spin>
+  }
+
+  let products;
+
+  if(productList.length) {
+    products = productList.map((productItem:IProductBlock) => productItem)
+  } else {
+    products = []
+  }
+
 
   return (
     <Row style={{minHeight:"70vh", padding:"20px"}}>
         <Col span={18} push={6}>
-            <Gallery/>
-            <Title>h1. Ant Design</Title>
-            <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta similique totam voluptatibus! Consectetur distinctio, quam. Accusamus cupiditate distinctio, dolorem molestiae nisi qui sed tempore temporibus. Doloribus impedit optio rerum tenetur?
-                <Link href="https://ant.design" target="_blank">
-                    Ant Design (Link)
-                </Link>
-            </Text>
-            <Title level={2}>h2. Ant Design</Title>
-            <Text type="success">Lorem ipsum dolor sit amet. </Text>
-            <Link href="https://ant.design" target="_blank">
-                Ant Design (Link)
-            </Link>
+          <Row gutter={[24, 24]}>
+            {products.length > 0 ?
+              products.map((item: IProductBlock) => <ProductBlock key={item.id} {...item}/>)
+              : "there isn't products"
+            }
+          </Row>
         </Col>
         <Col span={6} pull={18}>
             <TabsSection />

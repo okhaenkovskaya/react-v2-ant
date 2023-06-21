@@ -3,8 +3,11 @@ import { Menu, Space, Button, Skeleton } from "antd";
 import type { MenuProps } from "antd";
 import { UserOutlined, HeartOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 
+import { useAppSelector } from "../../hooks";
+
 const Header = () => {
     const navigate = useNavigate();
+    const {totalCount} = useAppSelector((state) => state.cart)
 
     const items: MenuProps["items"] = [
         {
@@ -12,20 +15,12 @@ const Header = () => {
             key: "/",
         },
         {
-            label: "about",
+            label: "About",
             key: "about",
         },
         {
             label: "Contact",
             key: "contact",
-        },
-        {
-            label: "profile",
-            key: "profile",
-        },
-        {
-            label: "product",
-            key: "product",
         },
     ];
 
@@ -52,6 +47,7 @@ const Header = () => {
                 </Button>
                 <Button type="dashed">
                     <ShoppingCartOutlined />
+                    {totalCount}
                 </Button>
             </Space>
         </Space>

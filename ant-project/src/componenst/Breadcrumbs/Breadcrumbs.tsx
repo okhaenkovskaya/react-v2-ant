@@ -4,16 +4,18 @@ import { useLocation } from "react-router-dom";
 const Breadcrumbs = () => {
     let location = useLocation();
 
+    console.log(location, 'location.pathname')
+
     return (
         <Breadcrumb
             style={{padding:"20px"}}
             items={[
                 {
-                      href: "/",
+                    href: "/",
                     title: "Home",
                 },
                 {
-                    title: `${location.pathname.replace("/", "")}`,
+                    title: `${location.pathname.slice(1).replace("/", " ")}`,
                 },
             ]}
         />

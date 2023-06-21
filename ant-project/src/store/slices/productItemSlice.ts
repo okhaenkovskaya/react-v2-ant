@@ -15,7 +15,6 @@ export const fetchProduct = createAsyncThunk<IProductItemSliceBlock, IProductIte
     const response = await axios.get<IProductItemSliceBlock>(
       `https://fakestoreapi.com/products/${id}`,
     );
-
     return response.data as IProductItemSliceBlock;
   }
 )
@@ -30,8 +29,13 @@ export const productItemSlice = createSlice({
       state.status = EProductSliceStatus.Loading;
     });
     builder.addCase(fetchProduct.fulfilled, (state, action) => {
-      state.product = action.payload;
-      state.status = EProductSliceStatus.Success;
+      if (action.payload === "") {
+        state.product = {} as IProductItemSliceBlock;
+        state.status = EProductSliceStatus.Error;
+      } else {
+        state.product = action.payload;
+        state.status = EProductSliceStatus.Success;
+      }
     })
     builder.addCase(fetchProduct.rejected, (state, ) => {
       state.product = {} as IProductItemSliceBlock;
