@@ -4,8 +4,6 @@ import { Col, Row, Spin } from "antd";
 
 import {EProductSliceStatus, IProductBlock} from "../../types/productSliceTypes";
 import {useAppDispatch, useAppSelector} from "../../hooks";
-
-
 import TabsSection from "../../componenst/Tabs/Tabs.tsx"
 import ProductBlock from "../../componenst/ProductBlock/ProductBlock";
 

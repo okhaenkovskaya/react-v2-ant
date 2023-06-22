@@ -1,8 +1,9 @@
 import { useAppSelector} from "../../hooks";
 import { Row, Layout, Typography } from "antd";
+
 import { IProductBlock } from "../../types/productSliceTypes.ts";
-import ProductBlock from "../../componenst/ProductBlock/ProductBlock.tsx";
 import type { ICartSlice} from "../../types/cartSliceTypes"
+import ProductBlock from "../../componenst/ProductBlock/ProductBlock.tsx";
 
 const CartPage = () => {
   const { Text } = Typography;

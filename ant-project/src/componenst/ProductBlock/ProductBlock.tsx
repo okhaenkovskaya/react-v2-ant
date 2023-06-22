@@ -14,10 +14,6 @@ type ProductBlockProps = {
   image: string;
 }
 
-export type TypeItem = {
-  id: number;
-  name: string;
-}
 
 const ProductBlock = ({id, title, price, image}: ProductBlockProps) => {
   const dispatch = useDispatch();
