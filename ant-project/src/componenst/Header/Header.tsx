@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { Menu, Space, Button, Skeleton } from "antd";
+import { useNavigate, Link } from "react-router-dom";
+import { Menu, Space, Button } from "antd";
 import type { MenuProps } from "antd";
 import { UserOutlined, HeartOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 
@@ -22,6 +22,10 @@ const Header = () => {
             label: "Contact",
             key: "contact",
         },
+        {
+            label: "Cart",
+            key: "cart",
+        },
     ];
 
     return (
@@ -30,13 +34,12 @@ const Header = () => {
                 onClick={({key}) => {
                     navigate(key)
                 }}
-                theme="dark"
                 mode="horizontal"
+                theme="dark"
                 defaultSelectedKeys={["/"]}
                 items={items}
             />
 
-            <Skeleton.Image />
 
             <Space wrap>
                 <Button type="primary">
@@ -46,8 +49,10 @@ const Header = () => {
                     <HeartOutlined />
                 </Button>
                 <Button type="dashed">
-                    <ShoppingCartOutlined />
-                    {totalCount}
+                    <Link to="/cart">
+                        <ShoppingCartOutlined />
+                        {totalCount}
+                    </Link>
                 </Button>
             </Space>
         </Space>

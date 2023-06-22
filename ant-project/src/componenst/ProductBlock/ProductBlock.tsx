@@ -30,7 +30,8 @@ const ProductBlock = ({id, title, price, image}: ProductBlockProps) => {
         id,
         price,
         title,
-        count: 1
+        count: 1,
+        image
       })
     )
   }
@@ -60,7 +61,7 @@ const ProductBlock = ({id, title, price, image}: ProductBlockProps) => {
           <DeleteOutlined onClick={removeFromCart} key="delete" />,
         ]}
       >
-        <Card.Meta title={<Link style={{fontSize: "12px"}} to={`product/${id}`}>{title}</Link>} />
+        <Card.Meta title={<Link style={{fontSize: "12px"}} to={`/product/${id}`}>{title}</Link>} />
         <Text style={{display: "flex", justifyContent: "space-between"}}>
           <span>${price}</span>
           <span><ShoppingCartOutlined />{count}</span>

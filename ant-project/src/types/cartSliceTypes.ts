@@ -3,6 +3,7 @@ export interface ICartItem {
   title: string;
   price: number;
   count: number;
+  image: string;
 }
 
 export interface ICartSlice {

@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 import PublicLayout from "./layouts/";
 import {store} from "./store"
 
-import { HomePage, AboutPage,ContactPage, ErrorPage, ProductPage } from "./pages"
+import { HomePage, AboutPage,ContactPage, ErrorPage, ProductPage, CartPage } from "./pages"
 
 const router = createBrowserRouter([
     {
@@ -29,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: "/product/:id",
                 element: <ProductPage />,
+            },
+            {
+                path: "/cart",
+                element: <CartPage />,
             }
         ],
     },
